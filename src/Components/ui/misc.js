@@ -2,7 +2,19 @@ import React from "react";
 import {Link} from 'react-router-dom';
 
 export const Tag = (props) =>{
-    const template=<div>tag</div>
+    const template=<div
+        style={{
+            background: props.bck,
+            fontSize: props.size,
+            color: props.color,
+            padding: '5px 10px',
+            display: 'inline-block',
+            fontFamily: 'Righteous',
+            ...props.add
+        }}
+    >  
+    {props.children }
+    </div>
 
     if(props.link){
         return( 
@@ -13,4 +25,24 @@ export const Tag = (props) =>{
     }else{
         return template
     }
+}
+
+//function use to reverse value array in snapshot result  
+export const firebaseLooper = (snapshot) =>{
+    const data = [];
+    snapshot.forEach((childSnapshot) =>{
+        data.push({
+            ...childSnapshot.val(), //... this mean continue push list value of each key
+            id: childSnapshot.key
+        })
+    });
+    return data
+}
+
+export const reverseArray = (actualArray) => {
+    let reversedArray = [];
+    for(let i= actualArray.length-1; i>= 0; i--){
+        reversedArray.push(actualArray[i]);
+    }
+    return reversedArray
 }

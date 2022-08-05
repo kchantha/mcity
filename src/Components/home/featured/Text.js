@@ -5,6 +5,7 @@ import FeaturedPlayer from '../../../Resources/images/featured_player.png';
 
 class Text extends Component {
 
+    //animateNumber is Arror function
     animateNumber=() =>(
         <Animate
             show={true}
@@ -105,7 +106,7 @@ class Text extends Component {
             timing:{delay:800,duration: 500,ease:easePolyOut}
         }}
     >
-        {({opacity,x,y}) =>{
+        {({opacity}) =>{
             return(
                 <div className="featured_player"
                     style={{
